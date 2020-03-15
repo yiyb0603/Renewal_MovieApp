@@ -11,14 +11,17 @@ const MoviePageContainer = ({ store }) => {
     const { handleMoviePage } = store.movieStore;
 
     const requestMoviePage = useCallback((id) => {
-        id = sessionStorage.getItem('id');
+        id = sessionStorage.getItem('selectIndex');
         handleMoviePage(id)
             .then(response => {
-                console.log(response);
+                if (response.status === "ok") {
+                    setMovieInfo(response.data.movie);
+                }
+                setIsLoading(false);
             })
 
             .catch (error => {
-                console.log(error);
+                throw new Error(`${error}`);
             })
     }, []);
 
@@ -28,7 +31,9 @@ const MoviePageContainer = ({ store }) => {
 
     return (
         <>
-            
+            {
+                isLoading ? <Loading /> : <MoviePage movieInfo ={movieInfo} />
+            }
         </>
     );
 }

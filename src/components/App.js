@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MovieList from 'containers/MovieListContainer';
+import MoviePage from 'containers/MoviePageContainer';
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component ={MovieList} />
+        <Route path="/" component ={MovieList} exact />
+        <Route path ="/page" component ={MoviePage} exact /> 
       </Switch>
     </Router>
   );

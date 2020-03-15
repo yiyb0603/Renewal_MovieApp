@@ -1,9 +1,10 @@
 import React from 'react';
 
 const MoviePage = ({ movieInfo }) => {
+    console.log(movieInfo);
     return (
         <div className ="MoviePage">
-            Hello!
+            MoviePage Informations Render Success!
         </div>
     );
 }

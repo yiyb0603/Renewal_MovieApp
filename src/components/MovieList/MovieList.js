@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaStar } from 'react-icons/fa';
+import { withRouter } from 'react-router-dom';
 import './MovieList.scss';
 
 /* eslint-disable */
 
-const MovieList = ({ movieList }) => {
+const MovieList = ({ movieList, history }) => {
     console.log(movieList);
 
     const movies = movieList.map(data => {
         const { id, language, url, runtime, title, year, rating, genres, medium_cover_image, summary } = data;
         return (
-            <div className ="MovieList-Movie" key ={id}>
+            <div className ="MovieList-Movie" key ={id} onClick ={() => {
+                sessionStorage.setItem('selectIndex', id);
+                history.push("/page");
+            }}>
                 <img className ="MovieList-Movie-Poster" src ={medium_cover_image} alt ={title} title ={title} />
                 <h2>
                     {title} ({year})
@@ -44,4 +48,4 @@ MovieList.propTypes = {
     movieList: PropTypes.object.isRequired
 };
 
-export default MovieList;
+export default withRouter(MovieList);

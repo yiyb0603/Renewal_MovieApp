@@ -20,7 +20,7 @@ const MovieListContainer = ({ store }) => {
         })
 
         .catch (error => {
-            console.log(error);
+            throw new Error(`${error}`);
         })
     }, []);
 

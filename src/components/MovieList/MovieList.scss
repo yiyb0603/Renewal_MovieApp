@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.MovieList {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: linear-gradient(#45aaf2, #26de81, #8854d0) fixed;
+
+    &-Title {
+        text-align: center;
+    }
+
+    &-Movie {
+        width: 70%;
+        margin: 20px auto;
+        background: linear-gradient(#c7ecee, #686de0, #95afc0);
+        border: 2px solid #4834d4;
+        overflow: auto;
+        cursor: pointer;
+        text-align: center;
+
+        &:hover {
+            background: linear-gradient(#ffbe76, #ff7979, #eb4d4b);
+            border: 2px solid black;
+        }
+
+        &-Star {
+            color: #f1c40f;
+            font-size: 1.25rem !important;
+            margin-left: 10px;
+        }
+
+        &-Language {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        &-Genre {
+            display: flex;
+            justify-content: center;
+            &-Genre {
+                margin-right: 2.5px;
+                margin-left: 10px;
+            }
+        }
+    }
+}

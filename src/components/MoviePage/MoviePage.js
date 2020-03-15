@@ -1,9 +1,9 @@
 import React from 'react';
 
-const MoviePage = () => {
+const MoviePage = ({ movieInfo }) => {
     return (
         <div className ="MoviePage">
-            
+            Hello!
         </div>
     );
 }

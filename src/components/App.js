@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" component ={MovieList} exact />
-        <Route path ="/page" component ={MoviePage} exact /> 
+        <Route path ="/page/:id" component ={MoviePage} exact /> 
       </Switch>
     </Router>
   );

@@ -2,16 +2,17 @@ import React, { useCallback, useState, useEffect } from "react";
 import { observer, inject } from "mobx-react";
 import MoviePage from 'components/MoviePage';
 import Loading from 'components/Loading';
-
-/* eslint-disable */
+import { withRouter } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 const MoviePageContainer = ({ store }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [movieInfo, setMovieInfo] = useState({});
+
+    const { id } = useParams();
     const { handleMoviePage } = store.movieStore;
 
-    const requestMoviePage = useCallback((id) => {
-        id = sessionStorage.getItem('selectIndex');
+    const requestMoviePage = useCallback(() => {
         handleMoviePage(id)
             .then(response => {
                 if (response.status === "ok") {
@@ -23,11 +24,11 @@ const MoviePageContainer = ({ store }) => {
             .catch (error => {
                 throw new Error(`${error}`);
             })
-    }, []);
+    }, [handleMoviePage, id]);
 
     useEffect(() => {
         requestMoviePage();
-    }, []);
+    }, [requestMoviePage]);
 
     return (
         <>
@@ -38,4 +39,4 @@ const MoviePageContainer = ({ store }) => {
     );
 }
 
-export default inject("store")(observer(MoviePageContainer));
+export default inject("store")(observer(withRouter(MoviePageContainer)));
